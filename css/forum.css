@@ -1,0 +1,42 @@
+
+form { display: block }
+div.postright, div.postfootright { background-color:#FFFFFF; }
+#topic {background-color:#FFFFFF;}
+div.inbox#admin {background-color:#DEE4F2;}
+div.postright#admin, div.postfootright#admin {background-color:#DEE4F2;}
+
+#dev_site_navigator div.center_box {
+   margin: 0 auto;
+   width: 980px
+}
+
+body {
+text-align: left;
+}
+
+form {display: block}
+
+body { background: #fff; font-size: 12px; text-align: left; }
+   .tcl, .tcr, td.tc2, td.tc3, div.box  { background-color: #fff; }
+
+#register{
+	color:#4863A0;
+	font-size:13px;
+	font-family:arial;
+	text-decoration:none;
+	font-weight:bold;
+
+}
+
+#login{
+	color:#4863A0;
+	font-size:13px;
+	font-family:arial;
+	text-decoration:none;
+	font-weight:bold;
+
+}
+
+.mini_box{
+	margin-top:32px;
+}

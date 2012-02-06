@@ -1,0 +1,188 @@
+/* This CSS adds formatting to make forum.developers.facebook.com look like developers.facebook.com  */
+
+body {
+  background: #f2f2f2 !important;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+
+.devsiteMenu {
+  background: #3B5998;
+  font-weight: bold;
+  padding-top: 8px;
+}
+
+.devsiteMenu, .devsiteMenu a {
+  font-size: 11px;
+  color: white;
+}
+
+.devsiteContent {
+  margin: auto;
+  max-width: 900px;
+}
+
+.devsiteMenu .devsiteContent {
+  background: #627aad;
+  border: 1px solid #1d4088;
+  border-bottom: 0px;
+  padding: 0px 16px;
+}
+
+.devsiteMenu a.logo,
+.devsiteMenu a.l {
+  display: block;
+  float: left;
+}
+
+.devsiteMenu a.logo {
+  line-height: 0;
+  margin-right: 12px;
+  padding: 7px 6px 9px;
+}
+
+.devsiteMenu a.logo img {
+  border: none;
+  width: 166px;
+  height: 17px;
+}
+
+.devsiteMenu a.l {
+  line-height: 29px;
+  padding: 2px 11px;
+}
+
+.devsiteMenu a.l:hover,
+.devsiteMenu a.logo:hover {
+  color: white;
+  background-color: #6d86b7;
+  text-decoration: none;
+}
+
+.devsiteMenu .clear {
+  clear: both;
+}
+
+.devsiteHeader {
+  font-size: 13px;
+}
+
+.devsiteHeader .devsiteContent {
+  background: white;
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  padding: 32px 16px 0;
+}
+
+.devsiteHeader h1 {
+  font-size: 28px;
+  font-weight: normal;
+  margin: 0;
+  padding: 0;
+  color: #333;
+  font-family: 'Lucida Grande', Tahoma, Verdana, Arial, sans-serif;
+  line-height: 34px;
+}
+
+.devsiteHeader .breadcrumbs {
+  margin-top: 4px;
+}
+
+.devsiteHeader .breadcrumbs a {
+  font-size: 13px;
+}
+
+.devsiteHeader .admin {
+  float: right;
+  font-size: 11px;
+  font-weight: bold;
+}
+
+.devsiteBody .devsiteContent {
+  background: white;
+  border: 1px solid #ddd;
+  border-top: 0px;
+  padding: 16px 16px 32px;
+}
+
+#navigator {
+  border-top: 1px solid #ddd;
+  margin: 20px 0 0px 0;
+  padding-top: 15px;
+}
+
+#navigator ul {
+  float: left;
+  display: block;
+  list-style: none;
+  padding: 0px;
+  margin: 0px;
+}
+
+#navigator  li {
+  float: left;
+  display: block;
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+#navigator li a {
+  margin-right: 25px;
+  white-space: nowrap;
+  cursor: pointer;
+  text-decoration: none;
+  color: #3b5998;
+  font-weight: bold;
+  font-size: 13px;
+}
+
+#navigator  li a.active,
+#navigator  li a:hover {
+  color: #000000;
+  text-decoration: none;
+}
+
+.devsiteFooter {
+  font-size: 11px;
+  color: #777;
+  margin-bottom: 25px;
+}
+
+.devsiteFooter .devsiteContent {
+  max-width: 925px;
+  padding: 10px;
+}
+
+.devsiteFooter .copyright {
+  float: left;
+}
+
+.devsiteFooter .links {
+  text-align: right;
+}
+
+.devsiteFooter .links a {
+  font-size: 11px;
+  margin-left: 15px;
+}
+
+
+
+/* ----------------------|  Clearfix |---------------------- */
+
+/* Works for all non-IE browsers */
+.clearfix:after {
+  clear: both;
+  content: ".";
+  display: block;
+  font-size: 0;
+  height: 0;
+  line-height: 0;
+  visibility: hidden;
+}
+
+.clearfix {
+  display: block;
+  zoom: 1;
+}
