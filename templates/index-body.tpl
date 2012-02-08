@@ -244,9 +244,19 @@
 						<legend>Select from the criteria</legend>
 							<div class="infldset">
 								<div class="rbox">
-									<label><input type='radio' name='recover_type' onclick="Simpleforum.execCriteria('userid')" onclick="Simpleforum.execCriteria('userid')" value='userid' checked="checked"> Search User Id</label> <label> <input type='radio' onclick="Simpleforum.execCriteria('question')"  name='recover_type'> Answer a question</label>
+									<label><input type='radio' name='recover_type' onclick="Simpleforum.execCriteria('userid')" value='userid' checked="checked"> Search User Id</label> <label><input type='radio' onclick="Simpleforum.execCriteria('question')"  name='recover_type'> Answer a question</label>
 									<div class='select_type_recover'>
-										<label>Your User Id : <input type="text" style='width:194px;'></label>
+										<div id='select_userid'>
+											<label>Your User Id : <input type="text" style='width:194px;'></label>
+										</div>
+										<div  id='select_question' style='display:none;'>
+											Select on the question.<br />
+											<select>
+												<option>-select-</option>
+											</select>
+											<br />
+											<input type='text'>
+										</div>
 									</div>
 								</div>
 							</div>

@@ -426,7 +426,14 @@ var Simpleforum = {
 			modal : true
 		});
 	},execCriteria : function(type){
-		
+		if(type=='userid'){
+			$("#select_userid").show();
+			$("#select_question").hide();
+		}else{
+			$("#select_userid").hide();
+			$("#select_question").show();
+
+		}
 	},execUserDeleteReply : function(idx){
 
 		var options = {
