@@ -37,6 +37,5 @@ body { background: #fff; font-size: 12px; text-align: left; }
 
 }
 
-.mini_box{
-	margin-top:32px;
-}
+.mini_box{margin-top:32px;}
+.select_type_recover{display:block;margin:10px 0 0 0;}
