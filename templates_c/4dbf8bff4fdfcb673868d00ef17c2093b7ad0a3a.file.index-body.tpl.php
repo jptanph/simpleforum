@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty 3.1.4, created on 2012-02-08 12:53:59
+<?php /* Smarty version Smarty 3.1.4, created on 2012-02-09 12:46:28
          compiled from "templates\index-body.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:166754f293d1dca4791-43878258%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '4dbf8bff4fdfcb673868d00ef17c2093b7ad0a3a' => 
     array (
       0 => 'templates\\index-body.tpl',
-      1 => 1328705579,
+      1 => 1328791584,
       2 => 'file',
     ),
   ),
@@ -273,14 +273,14 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 									<label><input type='radio' name='recover_type' onclick="Simpleforum.execCriteria('userid')" value='userid' checked="checked"> Search User Id</label> <label><input type='radio' onclick="Simpleforum.execCriteria('question')"  name='recover_type'> Answer a question</label>
 									<div class='select_type_recover'>
 										<div id='select_userid'>
-											<label>Your User Id : <input type="text" style='width:194px;'></label>
+											<label>Your User Id : <input type="text" style='width:194px;' id='userid'></label>
 										</div>
 										<div  id='select_question' style='display:none;'>
 											Select on the question.<br />
-											<select>
-												<option>-select-</option>
+											<select id='secure_question'>
 											</select>
 											<br />
+											Your Answer : <br />											
 											<input type='text'>
 										</div>
 									</div>
@@ -288,7 +288,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 							</div>
 					</fieldset>
 				</div>
-				<p style='text-align:center'><input type="button" name="submit" value="Submit" tabindex="5" accesskey="s" /> <input type="button" name="close" value="close" tabindex="5" accesskey="s" /></p>
+				<p style='text-align:center'><input type="button" name="submit" value="Submit" tabindex="5" accesskey="s" onclick="Simpleforum.execGetAccount()" /> <input type="button" name="close" value="close" tabindex="5" accesskey="s" /></p>
 			</form>
 		</div>
 	</div>

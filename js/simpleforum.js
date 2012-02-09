@@ -8,6 +8,7 @@ var Simpleforum = {
 	total_rows : 0,
 	limit : 0,
 	parent_idx : 0,
+	retrieve_type : 'userid',
 	domain_url : 'http://apps-domain.pacificindio.ph/simpleforum',
 	init : function(page){		
 		this.execLoginStatus();
@@ -426,13 +427,38 @@ var Simpleforum = {
 			modal : true
 		});
 	},execCriteria : function(type){
+		
 		if(type=='userid'){
 			$("#select_userid").show();
 			$("#select_question").hide();
 		}else{
 			$("#select_userid").hide();
-			$("#select_question").show();
-
+			var sHtml = '';
+			var options = {
+				url : Simpleforum.domain_url,
+				dataType : 'jsonp',
+				jsonpCallback : 'callback',
+				data : {
+					request : 'registrationform'					
+				},success : function(server_response){
+					sHtml += "<option value='0'>-select-</option>";
+					if(server_response){
+					
+						$.each(server_response,function(index,value){
+							sHtml += "<option value=" + value.idx + ">" + value.question + "</option>";
+						});
+					}
+					$("#secure_question").html(sHtml)
+					$("#select_question").show();
+				}
+			}
+			$.ajax(options);
+		}
+		this.retrieve_type = type;
+	},execGetAccount : function(){
+		var userid = $("#userid");
+		if(this.retrieve_type=='userid'){
+			
 		}
 	},execUserDeleteReply : function(idx){
 
