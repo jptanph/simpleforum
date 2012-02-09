@@ -457,9 +457,33 @@ var Simpleforum = {
 		this.retrieve_type = type;
 	},execGetAccount : function(){
 		var userid = $("#userid");
-		if(this.retrieve_type=='userid'){
-			
+		var sHtml = "";
+		var question_idx = $("#secure_question");
+		var question_answer = $("#secure_answer");
+		var options = {
+			url : Simpleforum.domain_url,
+			dataType : 'jsonp',
+			type : 'post',
+			jsonpCallback : 'callback',
+			data : {
+				request : 'recoveraccount',
+				type : Simpleforum.retrieve_type,
+				userid : userid.val(),
+				q_idx : question_idx.val(),
+				q_answer : question_answer.val()
+			},success : function(server_response){
+				if(server_response.type=='userid'){
+					if(server_response.list){
+						$.each(server_response.list,function(index,value){
+							sHtml += "<li>" + value.username + "</li>"; 
+						});
+						$("#result_list").html(sHtml);
+					}
+				}
+			}
 		}
+		
+		$.ajax(options);
 	},execUserDeleteReply : function(idx){
 
 		var options = {

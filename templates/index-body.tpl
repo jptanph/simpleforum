@@ -248,6 +248,9 @@
 									<div class='select_type_recover'>
 										<div id='select_userid'>
 											<label>Your User Id : <input type="text" style='width:194px;' id='userid'></label>
+											<div id='userid_list'>
+												<ul id='result_list'></ul>
+											</div>
 										</div>
 										<div  id='select_question' style='display:none;'>
 											Select on the question.<br />
@@ -255,7 +258,7 @@
 											</select>
 											<br />
 											Your Answer : <br />											
-											<input type='text'>
+											<input type='text' id='secure_answer'>
 										</div>
 									</div>
 								</div>

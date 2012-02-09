@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty 3.1.4, created on 2012-02-09 12:46:28
+<?php /* Smarty version Smarty 3.1.4, created on 2012-02-09 13:36:02
          compiled from "templates\index-body.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:166754f293d1dca4791-43878258%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '4dbf8bff4fdfcb673868d00ef17c2093b7ad0a3a' => 
     array (
       0 => 'templates\\index-body.tpl',
-      1 => 1328791584,
+      1 => 1328794542,
       2 => 'file',
     ),
   ),
@@ -274,6 +274,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 									<div class='select_type_recover'>
 										<div id='select_userid'>
 											<label>Your User Id : <input type="text" style='width:194px;' id='userid'></label>
+											<div id='userid_list'>
+												<ul id='result_list'></ul>
+											</div>
 										</div>
 										<div  id='select_question' style='display:none;'>
 											Select on the question.<br />
@@ -281,7 +284,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 											</select>
 											<br />
 											Your Answer : <br />											
-											<input type='text'>
+											<input type='text' id='secure_answer'>
 										</div>
 									</div>
 								</div>
