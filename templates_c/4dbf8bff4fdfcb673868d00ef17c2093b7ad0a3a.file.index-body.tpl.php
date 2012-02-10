@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty 3.1.4, created on 2012-02-10 13:16:07
+<?php /* Smarty version Smarty 3.1.4, created on 2012-02-10 14:39:24
          compiled from "templates\index-body.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:188584f35129f394af1-44522994%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '4dbf8bff4fdfcb673868d00ef17c2093b7ad0a3a' => 
     array (
       0 => 'templates\\index-body.tpl',
-      1 => 1328879745,
+      1 => 1328884755,
       2 => 'file',
     ),
   ),
@@ -324,6 +324,22 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 					</fieldset>
 				</div>
 				<p><input type="button" name="submit" value="Submit" tabindex="5" accesskey="s" onclick="Simpleforum.execSaveUserPost()" /> <input type="button" name="close" value="close" tabindex="5" accesskey="s" /></p>
+			</form>
+		</div>
+	</div>
+</div>
+
+<div id="user_edit_post" style="display:none;">
+	<div class="blockform">
+		<div class="box">
+			<form id="post" method="post">
+				<div class="inform">
+					<div class="infldset txtarea">
+						<label><strong>Message</strong><br />
+						<textarea name="req_message" rows="5" id="user_update_comment" style="resize:none;" cols="20" tabindex="2"></textarea><br /></label>
+					</div>
+				</div>
+				<p><input type="button" name="submit" value="Submit" tabindex="5" accesskey="s" onclick="Simpleforum.execUpdateUserPost()" /> <input type="button" name="close" value="close" tabindex="5" accesskey="s" /></p>
 			</form>
 		</div>
 	</div>

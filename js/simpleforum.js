@@ -9,6 +9,7 @@ var Simpleforum = {
 	limit : 0,
 	parent_idx : 0,
 	retrieve_type : 'userid',
+	user_view_id : 0,
 	domain_url : 'http://apps-domain.pacificindio.ph/simpleforum',
 	init : function(page){		
 		this.execLoginStatus();
@@ -518,7 +519,7 @@ var Simpleforum = {
 		var message = $("#user_comment");
 		var show_smiley = ($("#show_user_smiley").is(":checked") == true ) ? 'no' : 'yes';
 		var idx =  Simpleforum.execCheckLogin('idx');
-		alert(show_smiley)
+
 		var options = {
 			url : Simpleforum.domain_url,
 			type : 'html',
@@ -531,11 +532,50 @@ var Simpleforum = {
 				message : message.val(),
 				show_smiley : show_smiley
 			},success : function(server_response){
-				alert(server_response)
+				Simpleforum.init(1);
+				$("#user_add_post").dialog('close');
 			}
 		}		
 		$.ajax(options);
 		
+	},execUserEditPost :function(post_idx){
+		this.user_view_idx = post_idx
+		var options = {
+			url : Simpleforum.domain_url,
+			type : 'html',
+			dataType : 'jsonp',
+			jsonpCallback : 'callback',
+			data : {
+				request : 'viewuserpost',
+				idx : post_idx,
+			},success : function(server_response){
+				$("#user_edit_post").dialog({
+					title : 'Edit Reply',
+					width : 500,
+					modal : true
+				});
+				$("#user_update_comment").val(server_response.message)
+			}
+		}		
+		$.ajax(options);
+
+	},execUpdateUserPost : function(){
+		var message = $("#user_update_comment");
+		var options = {
+			url : Simpleforum.domain_url,
+			type : 'html',
+			dataType : 'jsonp',
+			jsonpCallback : 'callback',
+			data : {
+				request : 'updateuserpost',
+				idx : Simpleforum.user_view_idx,
+				message : message.val()
+			},success : function(server_response){
+				Simpleforum.execViewPost(Simpleforum.parent_idx,1);
+				$("#user_edit_post").dialog('close');
+			}
+		}	
+		$.ajax(options);		
 	},pagination : function(page,event){
 		
 		var paginate = ''	

@@ -302,6 +302,22 @@
 		</div>
 	</div>
 </div>
+
+<div id="user_edit_post" style="display:none;">
+	<div class="blockform">
+		<div class="box">
+			<form id="post" method="post">
+				<div class="inform">
+					<div class="infldset txtarea">
+						<label><strong>Message</strong><br />
+						<textarea name="req_message" rows="5" id="user_update_comment" style="resize:none;" cols="20" tabindex="2"></textarea><br /></label>
+					</div>
+				</div>
+				<p><input type="button" name="submit" value="Submit" tabindex="5" accesskey="s" onclick="Simpleforum.execUpdateUserPost()" /> <input type="button" name="close" value="close" tabindex="5" accesskey="s" /></p>
+			</form>
+		</div>
+	</div>
+</div>
 <!-- Hidden forms-->
 
 
