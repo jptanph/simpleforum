@@ -141,12 +141,24 @@ var Simpleforum = {
 		this.init(1);		
 	
 	},execAddPost : function(){
-		$("#add_post").dialog({
-			width:500,
-			title : 'Add New Post',
-			modal : true,
-			draggable : false
-		});
+		var username =  Simpleforum.execCheckLogin('username');
+		var idx =  Simpleforum.execCheckLogin('idx');
+		if(username && idx){
+			$("#user_add_post").dialog({
+				width:500,
+				title : 'Add New Post',
+				modal : true,
+				draggable : false
+			});
+
+		}else{
+			$("#add_post").dialog({
+				width:500,
+				title : 'Add New Post',
+				modal : true,
+				draggable : false
+			});		
+		}
 	},execSavePost : function(){
 	
 		var name = $("#add_post_name");
