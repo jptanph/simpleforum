@@ -9,6 +9,7 @@ var Simpleforum = {
 	limit : 0,
 	parent_idx : 0,
 	retrieve_type : 'userid',
+	user_view_id : 0,
 	domain_url : 'http://apps-domain.pacificindio.ph/simpleforum',
 	init : function(page){		
 		this.execLoginStatus();
@@ -141,12 +142,24 @@ var Simpleforum = {
 		this.init(1);		
 	
 	},execAddPost : function(){
-		$("#add_post").dialog({
-			width:500,
-			title : 'Add New Post',
-			modal : true,
-			draggable : false
-		});
+		var username =  Simpleforum.execCheckLogin('username');
+		var idx =  Simpleforum.execCheckLogin('idx');
+		if(username && idx){
+			$("#user_add_post").dialog({
+				width:500,
+				title : 'Add New Post',
+				modal : true,
+				draggable : false
+			});
+
+		}else{
+			$("#add_post").dialog({
+				width:500,
+				title : 'Add New Post',
+				modal : true,
+				draggable : false
+			});		
+		}
 	},execSavePost : function(){
 	
 		var name = $("#add_post_name");
@@ -496,10 +509,74 @@ var Simpleforum = {
 				idx : idx,
 				parent_idx : Simpleforum.parent_idx
 			},success : function(server_response){
+				alert(server_response.total_count)
 				Simpleforum.execViewPost(Simpleforum.parent_idx,server_response.last_page)
 			}
 		}
 		$.ajax(options);
+	},execSaveUserPost : function(){
+	
+		var subject = $("#user_subject");
+		var message = $("#user_comment");
+		var show_smiley = ($("#show_user_smiley").is(":checked") == true ) ? 'no' : 'yes';
+		var idx =  Simpleforum.execCheckLogin('idx');
+
+		var options = {
+			url : Simpleforum.domain_url,
+			type : 'html',
+			dataType : 'jsonp',
+			jsonpCallback : 'callback',
+			data : {
+				request : 'saveuserpost',
+				idx : idx,
+				subject : subject.val(),
+				message : message.val(),
+				show_smiley : show_smiley
+			},success : function(server_response){
+				Simpleforum.init(1);
+				$("#user_add_post").dialog('close');
+			}
+		}		
+		$.ajax(options);
+		
+	},execUserEditPost :function(post_idx){
+		this.user_view_idx = post_idx
+		var options = {
+			url : Simpleforum.domain_url,
+			type : 'html',
+			dataType : 'jsonp',
+			jsonpCallback : 'callback',
+			data : {
+				request : 'viewuserpost',
+				idx : post_idx,
+			},success : function(server_response){
+				$("#user_edit_post").dialog({
+					title : 'Edit Reply',
+					width : 500,
+					modal : true
+				});
+				$("#user_update_comment").val(server_response.message)
+			}
+		}		
+		$.ajax(options);
+
+	},execUpdateUserPost : function(){
+		var message = $("#user_update_comment");
+		var options = {
+			url : Simpleforum.domain_url,
+			type : 'html',
+			dataType : 'jsonp',
+			jsonpCallback : 'callback',
+			data : {
+				request : 'updateuserpost',
+				idx : Simpleforum.user_view_idx,
+				message : message.val()
+			},success : function(server_response){
+				Simpleforum.execViewPost(Simpleforum.parent_idx,1);
+				$("#user_edit_post").dialog('close');
+			}
+		}	
+		$.ajax(options);		
 	},pagination : function(page,event){
 		
 		var paginate = ''	
