@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty 3.1.4, created on 2012-02-10 12:55:51
+<?php /* Smarty version Smarty 3.1.4, created on 2012-02-10 13:16:07
          compiled from "templates\index-body.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:188584f35129f394af1-44522994%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '4dbf8bff4fdfcb673868d00ef17c2093b7ad0a3a' => 
     array (
       0 => 'templates\\index-body.tpl',
-      1 => 1328878550,
+      1 => 1328879745,
       2 => 'file',
     ),
   ),
@@ -307,9 +307,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 					<fieldset>
 						<legend>Write your message and submit</legend>
 						<div class="infldset txtarea">
-							<label><strong>Subject</strong><br /><input class="longinput" type="text" id="add_post_subject" name="req_subject" value="" size="80" maxlength="70" tabindex="1" /><br /></label>
+							<label><strong>Subject</strong><br /><input class="longinput" type="text" id="user_subject" size="80" maxlength="70" tabindex="1" /><br /></label>
 							<label><strong>Message</strong><br />
-							<textarea name="req_message" rows="5" id="add_post_message" style="resize:none;" cols="20" tabindex="2"></textarea><br /></label>
+							<textarea name="req_message" rows="5" id="user_comment" style="resize:none;" cols="20" tabindex="2"></textarea><br /></label>
 						</div>
 					</fieldset>
 				</div>
@@ -318,12 +318,12 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 						<legend>Options</legend>
 						<div class="infldset">
 							<div class="rbox">
-								<label><input type="checkbox" name="show_smiley" id="show_smiley" tabindex="3" />Never show smilies as icons for this post<br /></label>
+								<label><input type="checkbox" name="show_smiley" id="show_user_smiley" tabindex="3" />Never show smilies as icons for this post<br /></label>
 							</div>
 						</div>
 					</fieldset>
 				</div>
-				<p><input type="button" name="submit" value="Submit" tabindex="5" accesskey="s" onclick="Simpleforum.execSavePost()" /> <input type="button" name="close" value="close" tabindex="5" accesskey="s" /></p>
+				<p><input type="button" name="submit" value="Submit" tabindex="5" accesskey="s" onclick="Simpleforum.execSaveUserPost()" /> <input type="button" name="close" value="close" tabindex="5" accesskey="s" /></p>
 			</form>
 		</div>
 	</div>

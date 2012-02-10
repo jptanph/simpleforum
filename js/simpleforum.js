@@ -512,6 +512,30 @@ var Simpleforum = {
 			}
 		}
 		$.ajax(options);
+	},execSaveUserPost : function(){
+	
+		var subject = $("#user_subject");
+		var message = $("#user_comment");
+		var show_smiley = ($("#show_user_smiley").is(":checked") == true ) ? 'no' : 'yes';
+		var idx =  Simpleforum.execCheckLogin('idx');
+		alert(show_smiley)
+		var options = {
+			url : Simpleforum.domain_url,
+			type : 'html',
+			dataType : 'jsonp',
+			jsonpCallback : 'callback',
+			data : {
+				request : 'saveuserpost',
+				idx : idx,
+				subject : subject.val(),
+				message : message.val(),
+				show_smiley : show_smiley
+			},success : function(server_response){
+				alert(server_response)
+			}
+		}		
+		$.ajax(options);
+		
 	},pagination : function(page,event){
 		
 		var paginate = ''	

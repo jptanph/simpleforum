@@ -281,9 +281,9 @@
 					<fieldset>
 						<legend>Write your message and submit</legend>
 						<div class="infldset txtarea">
-							<label><strong>Subject</strong><br /><input class="longinput" type="text" id="add_post_subject" name="req_subject" value="" size="80" maxlength="70" tabindex="1" /><br /></label>
+							<label><strong>Subject</strong><br /><input class="longinput" type="text" id="user_subject" size="80" maxlength="70" tabindex="1" /><br /></label>
 							<label><strong>Message</strong><br />
-							<textarea name="req_message" rows="5" id="add_post_message" style="resize:none;" cols="20" tabindex="2"></textarea><br /></label>
+							<textarea name="req_message" rows="5" id="user_comment" style="resize:none;" cols="20" tabindex="2"></textarea><br /></label>
 						</div>
 					</fieldset>
 				</div>
@@ -292,12 +292,12 @@
 						<legend>Options</legend>
 						<div class="infldset">
 							<div class="rbox">
-								<label><input type="checkbox" name="show_smiley" id="show_smiley" tabindex="3" />Never show smilies as icons for this post<br /></label>
+								<label><input type="checkbox" name="show_smiley" id="show_user_smiley" tabindex="3" />Never show smilies as icons for this post<br /></label>
 							</div>
 						</div>
 					</fieldset>
 				</div>
-				<p><input type="button" name="submit" value="Submit" tabindex="5" accesskey="s" onclick="Simpleforum.execSavePost()" /> <input type="button" name="close" value="close" tabindex="5" accesskey="s" /></p>
+				<p><input type="button" name="submit" value="Submit" tabindex="5" accesskey="s" onclick="Simpleforum.execSaveUserPost()" /> <input type="button" name="close" value="close" tabindex="5" accesskey="s" /></p>
 			</form>
 		</div>
 	</div>
