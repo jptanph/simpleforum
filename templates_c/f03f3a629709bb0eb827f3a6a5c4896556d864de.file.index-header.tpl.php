@@ -1,6 +1,6 @@
-<?php /* Smarty version Smarty 3.1.4, created on 2012-02-05 11:16:01
+<?php /* Smarty version Smarty 3.1.4, created on 2012-02-10 12:50:38
          compiled from "templates\index-header.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:313144f293d1da8bcf6-04685769%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:175574f35129eee8ea5-98563122%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
@@ -11,12 +11,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '313144f293d1da8bcf6-04685769',
+  'nocache_hash' => '175574f35129eee8ea5-98563122',
   'function' => 
   array (
   ),
-  'version' => 'Smarty 3.1.4',
-  'unifunc' => 'content_4f293d1dbda1e',
   'variables' => 
   array (
     'sTitle' => 0,
@@ -27,8 +25,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'SSIMPLEFORUM_JS' => 0,
   ),
   'has_nocache_code' => false,
+  'version' => 'Smarty 3.1.4',
+  'unifunc' => 'content_4f35129f3243e',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_4f293d1dbda1e')) {function content_4f293d1dbda1e($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<?php if ($_valid && !is_callable('content_4f35129f3243e')) {function content_4f35129f3243e($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 
 <html>
 <head>
