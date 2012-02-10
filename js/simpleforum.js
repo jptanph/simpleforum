@@ -509,6 +509,7 @@ var Simpleforum = {
 				idx : idx,
 				parent_idx : Simpleforum.parent_idx
 			},success : function(server_response){
+				alert(server_response.total_count)
 				Simpleforum.execViewPost(Simpleforum.parent_idx,server_response.last_page)
 			}
 		}
