@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty 3.1.4, created on 2012-02-10 14:39:24
+<?php /* Smarty version Smarty 3.1.4, created on 2012-02-11 03:25:17
          compiled from "templates\index-body.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:188584f35129f394af1-44522994%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '4dbf8bff4fdfcb673868d00ef17c2093b7ad0a3a' => 
     array (
       0 => 'templates\\index-body.tpl',
-      1 => 1328884755,
+      1 => 1328930716,
       2 => 'file',
     ),
   ),
@@ -272,20 +272,21 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 								<div class="rbox">
 									<label><input type='radio' name='recover_type' onclick="Simpleforum.execCriteria('userid')" value='userid' checked="checked"> Search User Id</label> <label><input type='radio' onclick="Simpleforum.execCriteria('question')"  name='recover_type'> Answer a question</label>
 									<div class='select_type_recover'>
+										<label>Your User Id : <input type="text" style='width:194px;' id='userid'></label>
 										<div id='select_userid'>
-											<label>Your User Id : <input type="text" style='width:194px;' id='userid'></label>
 											<div id='userid_list'>
 												<ul id='result_list'></ul>
 											</div>
 										</div>
 										<div  id='select_question' style='display:none;'>
-											Select on the question.<br />
-											<select id='secure_question'>
-											</select>
-											<br />
-											Your Answer : <br />											
-											<input type='text' id='secure_answer'>
-										</div>
+											<div style='display:none;' id='question_list'>
+												Select on the question.<br />
+												<select id='secure_question'>
+												</select>
+												<br />
+												Your Answer : <br />											
+												<input type='text' id='secure_answer'>
+											</div>
 									</div>
 								</div>
 							</div>
