@@ -246,20 +246,21 @@
 								<div class="rbox">
 									<label><input type='radio' name='recover_type' onclick="Simpleforum.execCriteria('userid')" value='userid' checked="checked"> Search User Id</label> <label><input type='radio' onclick="Simpleforum.execCriteria('question')"  name='recover_type'> Answer a question</label>
 									<div class='select_type_recover'>
+										<label>Your User Id : <input type="text" style='width:194px;' id='userid'></label>
 										<div id='select_userid'>
-											<label>Your User Id : <input type="text" style='width:194px;' id='userid'></label>
 											<div id='userid_list'>
 												<ul id='result_list'></ul>
 											</div>
 										</div>
 										<div  id='select_question' style='display:none;'>
-											Select on the question.<br />
-											<select id='secure_question'>
-											</select>
-											<br />
-											Your Answer : <br />											
-											<input type='text' id='secure_answer'>
-										</div>
+											<div style='display:none;' id='question_list'>
+												Select on the question.<br />
+												<select id='secure_question'>
+												</select>
+												<br />
+												Your Answer : <br />											
+												<input type='text' id='secure_answer'>
+											</div>
 									</div>
 								</div>
 							</div>

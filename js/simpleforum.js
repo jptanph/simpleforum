@@ -492,6 +492,10 @@ var Simpleforum = {
 						});
 						$("#result_list").html(sHtml);
 					}
+				}else if(server_response.type=='question'){
+					if(server_response.list=='ok'){
+						alert('Your account information has been sent to your email!');
+					}
 				}
 			}
 		}
