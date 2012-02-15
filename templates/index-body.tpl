@@ -253,10 +253,13 @@
 											</div>
 										</div>
 										<div  id='select_question' style='display:none;'>
-											<div style='display:none;' id='question_list'>
+											<div>
+												<br />
+												<br />
 												Select on the question.<br />
 												<select id='secure_question'>
 												</select>
+												<br />
 												<br />
 												Your Answer : <br />											
 												<input type='text' id='secure_answer'>

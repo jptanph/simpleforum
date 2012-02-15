@@ -442,8 +442,10 @@ var Simpleforum = {
 	},execCriteria : function(type){
 		
 		if(type=='userid'){
+			
 			$("#select_userid").show();
 			$("#select_question").hide();
+			
 		}else{
 			$("#select_userid").hide();
 			var sHtml = '';
@@ -454,21 +456,13 @@ var Simpleforum = {
 				data : {
 					request : 'registrationform'					
 				},success : function(server_response){
-					sHtml += "<option value='0'>-select-</option>";
-					if(server_response){
-					
-						$.each(server_response,function(index,value){
-							sHtml += "<option value=" + value.idx + ">" + value.question + "</option>";
-						});
-					}
-					$("#secure_question").html(sHtml)
-					$("#select_question").show();
 				}
 			}
 			$.ajax(options);
 		}
 		this.retrieve_type = type;
 	},execGetAccount : function(){
+	
 		var userid = $("#userid");
 		var sHtml = "";
 		var question_idx = $("#secure_question");
@@ -494,7 +488,15 @@ var Simpleforum = {
 					}
 				}else if(server_response.type=='question'){
 					if(server_response.list=='ok'){
-						alert('Your account information has been sent to your email!');
+						sHtml += "<option value='0'>-select-</option>";
+						if(server_response){						
+							$.each(server_response.question_list,function(index,value){
+								sHtml += "<option value=" + value.idx + ">" + value.question + "</option>";
+							});
+						}
+						$("#secure_question").html(sHtml)
+						$("#select_question").show();
+						//alert('Your account information has been sent to your email!');
 					}
 				}
 			}
