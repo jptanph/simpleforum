@@ -18,17 +18,14 @@ var Simpleforum = {
 		var keyword = (this.keyword=='') ? '' : this.keyword;
 		$("#view_post").hide();
 		$("#list_area").show();
-		var options = {
-			url : Simpleforum.domain_url,
-			type : 'html',
-			dataType : 'jsonp',
-			jsonpCallback : 'callback',
-			data : {
+		
+		$.getJSON(
+			Simpleforum.domain_url + '?callback=?',
+			{
 				request : 'post',
 				page : page,
 				keyword : keyword
-			},success : function(server_response){
-
+			},function(server_response){
 				Simpleforum.total_rows= server_response.total_record;
 				Simpleforum.limit = server_response.limit;
 				var paginate = Simpleforum.pagination(page,'Simpleforum.init');
@@ -63,13 +60,11 @@ var Simpleforum = {
 				$("#list_page2").html(paginate);
 				$("#login_form").dialog('close');
 				$("#logout_form").dialog('close');
-				
-			},error : function(a,b,c){
-
 			}
-		}
+		);
+		
 		$("input[type='button']").button().css({'height':'24px','fontSize' : '12px','padding-top':'3px'});
-		$.ajax(options);
+
 		this.page_tracker = page;
 		
 	},execViewPost : function(idx,page){
@@ -77,20 +72,16 @@ var Simpleforum = {
 		
 		var sHtml = '';
 		var login_idx = Simpleforum.execCheckLogin('idx');
-		var options = {
-			url : Simpleforum.domain_url,
-			type : 'html',
-			dataType : 'jsonp',
-			jsonpCallback : 'callback',
-			data : {
-				
+		
+		
+			$.getJSON(
+			Simpleforum.domain_url + '?callback=?',
+			{
 				request : 'view',
 				idx : idx,
 				login_idx : login_idx,
 				page : page
-				
-			},success : function(server_response){
-				
+			},function(server_response){
 				$("#view_post").show();
 				Simpleforum.total_rows= server_response.total_record;
 				Simpleforum.limit = server_response.limit;
@@ -128,12 +119,9 @@ var Simpleforum = {
 				$("#reply_list").html(sHtml);
 				$("#list_reply_page1").html(paginate);
 				$("#list_reply_page2").html(paginate);
-				}
-				
 			}
-		}
+		});
 		
-		$.ajax(options);
 		this.parent_idx = idx;
 		
 	},execSearch : function(){
@@ -167,50 +155,38 @@ var Simpleforum = {
 		var subject = $("#add_post_subject");
 		var message = $("#add_post_message");
 		var show_smiley = ($("#show_smiley").is(":checked") == true ) ? 'no' : 'yes';
-		
-		var options = {
-			url : Simpleforum.domain_url,
-			type : 'html',
-			dataType : 'jsonp',
-			jsonpCallback : 'callback',
-			data : {
+		$.getJSON(
+			Simpleforum.domain_url + '?callback=?',
+			{
 				request : 'savepost',
 				name : name.val(),
 				password : name.val(),
 				subject : subject.val(),
 				message : message.val(),
 				smiley : show_smiley
-			},success : function(server_response){
+			},function(server_response){
 				Simpleforum.keyword = '';
 				Simpleforum.init(1)
 				$("#add_post").dialog('close');	
+			
 			}
-		}
-		$.ajax(options);
+		);
+		
 	},execSaveReply : function(){
 		var name = $("#reply_name");
 		var password = $("#reply_password");
 		var message = $("#reply_message");
-		
-		var options = {
-			url : Simpleforum.domain_url,
-			type : 'html',
-			dataType : 'jsonp',
-			jsonpCallback : 'callback',
-			data : {
-				parent_idx : Simpleforum.parent_idx,
-				request : 'savereply',
-				name : name.val(),
-				password : name.val(),
-				message : message.val()
-			},success : function(server_response){
-				Simpleforum.execViewPost(Simpleforum.parent_idx,server_response.last_page)
-			},error : function(a,b,c){
-				
-			}
-		}
-		$.ajax(options);
-	
+		$.getJSON(
+		Simpleforum.domain_url + '?callback=?',
+		{
+			parent_idx : Simpleforum.parent_idx,
+			request : 'savereply',
+			name : name.val(),
+			password : name.val(),
+			message : message.val()
+		},function(server_response){
+			Simpleforum.execViewPost(Simpleforum.parent_idx,server_response.last_page)
+		});	
 	},execEditPost : function(){
 		$("#edit_post").dialog({
 			title : 'Edit Reply',
@@ -229,21 +205,15 @@ var Simpleforum = {
 	},execReplyDeleteConfirm : function(){
 		
 		var delete_password = $("#delete_reply_password");
-
-		var options = {
-			url : Simpleforum.domain_url,
-			type : 'html',
-			dataType : 'jsonp',
-			jsonpCallback : 'callback',
-			data : {
-				request : 'deletereply',
-				idx : Simpleforum.change_idx,
-				password : delete_password.val()
-			},success : function(server_response){
+		$.getJSON(
+		Simpleforum.domain_url + '?callback=?',
+		{
+			request : 'deletereply',
+			idx : Simpleforum.change_idx,
+			password : delete_password.val()
+		},function(server_response){
 			
-			}
-		}
-		$.ajax(options);
+		});
 	},reply : function(page){
 	
 		this.execViewPost(this.parent_idx,page);	
@@ -260,51 +230,41 @@ var Simpleforum = {
 	
 		var username = $("#login_username");
 		var password = $("#login_password");
-		
-		var options = {
-			url : Simpleforum.domain_url,
-			type : 'html',
-			dataType : 'jsonp',
-			jsonpCallback : 'callback',
-			data : {
-				request : 'login',
-				username : username.val(),
-				password : password.val()
-			},success : function(server_response){
-				Simpleforum.execSetLogin('username',server_response.username,365);
-				Simpleforum.execSetLogin('idx',server_response.idx,365);
-				Simpleforum.init(1);
-				
-			}
-		}
-		$.ajax(options);
+		$.getJSON(
+		Simpleforum.domain_url + '?callback=?',
+		{
+			request : 'login',
+			username : username.val(),
+			password : password.val()
+		},function(server_response){
+			Simpleforum.execSetLogin('username',server_response.username,365);
+			Simpleforum.execSetLogin('idx',server_response.idx,365);
+			Simpleforum.init(1);
+		});	
+	
 	},execRegistrationForm : function(){
 		var sHtml = '';
-		var options = {
-			url : Simpleforum.domain_url,
-			type : 'html',
-			dataType : 'jsonp',
-			jsonpCallback : 'callback',
-			data : {
-				request : 'registrationform'
-			},success : function(server_response){
-				if(server_response)
-				{
-					sHtml += "<option value='0'>-select-</option>";
-					$.each(server_response,function(index,value){
-						sHtml += "<option value=" + value.idx + ">" + value.question + "</option>";
-					});
-					$("#register_questions").html(sHtml);
-					
-					$("#registration_form").dialog({
-						width:390,
-						draggable : false,
-						modal:true
-					});
-				}
-			}
-		}
-		$.ajax(options);
+		
+		$.getJSON(
+		Simpleforum.domain_url + '?callback=?',
+		{
+			request : 'registrationform'
+		},function(server_response){
+			if(server_response)
+			{
+				sHtml += "<option value='0'>-select-</option>";
+				$.each(server_response,function(index,value){
+					sHtml += "<option value=" + value.idx + ">" + value.question + "</option>";
+				});
+				$("#register_questions").html(sHtml);
+				
+				$("#registration_form").dialog({
+					width:390,
+					draggable : false,
+					modal:true
+				});
+			}		
+		});
 	},execSaveRegistration : function(){
 	
 		var name = $("#register_name");
@@ -314,29 +274,21 @@ var Simpleforum = {
 		var email = $("#register_email");
 		var question = $("#register_questions");
 		var answer = $("#register_answer");
+		$.getJSON(
+		Simpleforum.domain_url + '?callback=?',
+		{
+			request : 'saveregistration',
+			question_idx : question.val(),
+			name : name.val(),
+			username : username.val(),
+			password : password.val(),
+			email : email.val(),
+			question : question.val(),
+			answer : answer.val()
+		},function(server_response){
 		
-		var options = {
-			url : Simpleforum.domain_url,
-			type : 'html',
-			dataType : 'jsonp',
-			jsonpCallback : 'callback',
-			data : {
-				request : 'saveregistration',
-				question_idx : question.val(),
-				name : name.val(),
-				username : username.val(),
-				password : password.val(),
-				email : email.val(),
-				question : question.val(),
-				answer : answer.val()
-				
-			},success : function(server_response){
-
-			},error : function(a,b,c){
-				alert(b)
-			}
-		}
-		$.ajax(options);
+		});
+		
 	},execSetLogin : function(cookie_key,cookie_value,expiredays){
 		var exdate = new Date();
 		
@@ -400,24 +352,18 @@ var Simpleforum = {
 	},execSaveUserReply : function(){
 		var message = $("#reply_message");
 		var idx =  Simpleforum.execCheckLogin('idx');
-		var options = {
-			url : Simpleforum.domain_url,
-			type : 'html',
-			dataType : 'jsonp',
-			jsonpCallback : 'callback',
-			data : {
-				parent_idx : Simpleforum.parent_idx,
-				request : 'saveuserreply',
-				idx : idx,
-				message : message.val()
-			},success : function(server_response){
-				Simpleforum.execViewPost(Simpleforum.parent_idx,server_response.last_page)
-			},error : function(a,b,c){
-				
-			}
-		}
-		$.ajax(options);
-	
+
+		$.getJSON(
+		Simpleforum.domain_url + '?callback=?',
+		{
+			parent_idx : Simpleforum.parent_idx,
+			request : 'saveuserreply',
+			idx : idx,
+			message : message.val()
+		},function(server_response){
+			Simpleforum.execViewPost(Simpleforum.parent_idx,server_response.last_page)		
+		});
+		
 	},execLogoutForm : function(){
 		$("#logout_form").dialog({
 			modal : true,
@@ -449,16 +395,13 @@ var Simpleforum = {
 		}else{
 			$("#select_userid").hide();
 			var sHtml = '';
-			var options = {
-				url : Simpleforum.domain_url,
-				dataType : 'jsonp',
-				jsonpCallback : 'callback',
-				data : {
-					request : 'registrationform'					
-				},success : function(server_response){
-				}
-			}
-			$.ajax(options);
+			$.getJSON(
+			Simpleforum.domain_url + '?callback=?',
+			{
+				request : 'registrationform'	
+			},function(server_response){
+	
+			});
 		}
 		this.retrieve_type = type;
 	},execGetAccount : function(){
@@ -467,122 +410,101 @@ var Simpleforum = {
 		var sHtml = "";
 		var question_idx = $("#secure_question");
 		var question_answer = $("#secure_answer");
-		var options = {
-			url : Simpleforum.domain_url,
-			dataType : 'jsonp',
-			type : 'post',
-			jsonpCallback : 'callback',
-			data : {
-				request : 'recoveraccount',
-				type : Simpleforum.retrieve_type,
-				userid : userid.val(),
-				q_idx : question_idx.val(),
-				q_answer : question_answer.val()
-			},success : function(server_response){
-				if(server_response.type=='userid'){
-					if(server_response.list){
-						$.each(server_response.list,function(index,value){
-							sHtml += "<li>" + value.username + "</li>"; 
+		
+		$.getJSON(
+		Simpleforum.domain_url + '?callback=?',
+		{
+			request : 'recoveraccount',
+			type : Simpleforum.retrieve_type,
+			userid : userid.val(),
+			q_idx : question_idx.val(),
+			q_answer : question_answer.val()
+		},function(server_response){
+			if(server_response.type=='userid'){
+				if(server_response.list){
+					$.each(server_response.list,function(index,value){
+						sHtml += "<li>" + value.username + "</li>"; 
+					});
+					$("#result_list").html(sHtml);
+				}
+			}else if(server_response.type=='question'){
+				if(server_response.list=='ok'){
+					sHtml += "<option value='0'>-select-</option>";
+					if(server_response){						
+						$.each(server_response.question_list,function(index,value){
+							sHtml += "<option value=" + value.idx + ">" + value.question + "</option>";
 						});
-						$("#result_list").html(sHtml);
 					}
-				}else if(server_response.type=='question'){
-					if(server_response.list=='ok'){
-						sHtml += "<option value='0'>-select-</option>";
-						if(server_response){						
-							$.each(server_response.question_list,function(index,value){
-								sHtml += "<option value=" + value.idx + ">" + value.question + "</option>";
-							});
-						}
-						$("#secure_question").html(sHtml)
-						$("#select_question").show();
-						//alert('Your account information has been sent to your email!');
-					}
+					$("#secure_question").html(sHtml)
+					$("#select_question").show();
+					//alert('Your account information has been sent to your email!');
 				}
 			}
-		}
+		});
 		
-		$.ajax(options);
 	},execUserDeleteReply : function(idx){
-
-		var options = {
-			url : Simpleforum.domain_url,
-			type : 'html',
-			dataType : 'jsonp',
-			jsonpCallback : 'callback',
-			data : {
-				request : 'deleteuserreply',
-				idx : idx,
-				parent_idx : Simpleforum.parent_idx
-			},success : function(server_response){
-				alert(server_response.total_count)
-				Simpleforum.execViewPost(Simpleforum.parent_idx,server_response.last_page)
-			}
-		}
-		$.ajax(options);
+		$.getJSON(
+		Simpleforum.domain_url + '?callback=?',
+		{
+			request : 'deleteuserreply',
+			idx : idx,
+			parent_idx : Simpleforum.parent_idx
+		},function(server_response){
+			alert(server_response.total_count)
+			Simpleforum.execViewPost(Simpleforum.parent_idx,server_response.last_page)
+		});
+		
 	},execSaveUserPost : function(){
 	
 		var subject = $("#user_subject");
 		var message = $("#user_comment");
 		var show_smiley = ($("#show_user_smiley").is(":checked") == true ) ? 'no' : 'yes';
 		var idx =  Simpleforum.execCheckLogin('idx');
-
-		var options = {
-			url : Simpleforum.domain_url,
-			type : 'html',
-			dataType : 'jsonp',
-			jsonpCallback : 'callback',
-			data : {
-				request : 'saveuserpost',
-				idx : idx,
-				subject : subject.val(),
-				message : message.val(),
-				show_smiley : show_smiley
-			},success : function(server_response){
-				Simpleforum.init(1);
-				$("#user_add_post").dialog('close');
-			}
-		}		
-		$.ajax(options);
+		$.getJSON(
+		Simpleforum.domain_url + '?callback=?',
+		{
+			request : 'saveuserpost',
+			idx : idx,
+			subject : subject.val(),
+			message : message.val(),
+			show_smiley : show_smiley
+		},function(server_response){
+			Simpleforum.init(1);
+			$("#user_add_post").dialog('close');
+		});
+		
 		
 	},execUserEditPost :function(post_idx){
-		this.user_view_idx = post_idx
-		var options = {
-			url : Simpleforum.domain_url,
-			type : 'html',
-			dataType : 'jsonp',
-			jsonpCallback : 'callback',
-			data : {
-				request : 'viewuserpost',
-				idx : post_idx,
-			},success : function(server_response){
-				$("#user_edit_post").dialog({
-					title : 'Edit Reply',
-					width : 500,
-					modal : true
-				});
-				$("#user_update_comment").val(server_response.message)
-			}
-		}		
-		$.ajax(options);
-
+		this.user_view_idx = post_idx;
+		
+		$.getJSON(
+		Simpleforum.domain_url + '?callback=?',
+		{
+			request : 'viewuserpost',
+			idx : post_idx
+		},function(server_response){
+			$("#user_edit_post").dialog({
+				title : 'Edit Reply',
+				width : 500,
+				modal : true
+			});
+			$("#user_update_comment").val(server_response.message)
+		});		
+		
 	},execUpdateUserPost : function(){
 		var message = $("#user_update_comment");
-		var options = {
-			url : Simpleforum.domain_url,
-			type : 'html',
-			dataType : 'jsonp',
-			jsonpCallback : 'callback',
-			data : {
-				request : 'updateuserpost',
-				idx : Simpleforum.user_view_idx,
-				message : message.val()
-			},success : function(server_response){
-				Simpleforum.execViewPost(Simpleforum.parent_idx,1);
-				$("#user_edit_post").dialog('close');
-			}
-		}	
-		$.ajax(options);		
+
+		$.getJSON(
+		Simpleforum.domain_url + '?callback=?',
+		{
+			request : 'updateuserpost',
+			idx : Simpleforum.user_view_idx,
+			message : message.val()
+		},function(server_response){
+			Simpleforum.execViewPost(Simpleforum.parent_idx,1);
+			$("#user_edit_post").dialog('close');
+		});			
+		
 	},pagination : function(page,event){
 		
 		var paginate = ''	
